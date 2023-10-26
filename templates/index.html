@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>RBD Project</h1>
+    <div class=" flash flash__primary mv-4">
+              <div class="h3">➕ База данных</div>
+
+              <div> Казалось бы что использовать
+              <a href="https://www.sqlite.org/index.html" target="_blank">SQLite</a>
+                  или
+                <a href="https://www.mysql.com/" target="_blank">MySQL</a>
+                  ?
+
+              </div>
+        <img src="https://www.keycdn.com/img/support/sqlite-vs-mysql-lg.webp">
+
+        <div class="h3">➕ Собственно выбор</div>
+        <div> Попробуем на
+            <a href="https://www.mysql.com/" target="_blank">MySQL</a>
+            и если не получится будем пробовать
+              <a href="https://www.sqlite.org/index.html" target="_blank">SQLite</a>
+
+
+              </div>
+          </div>
+  </div>{% endblock %}
