@@ -15,7 +15,7 @@ def db_connection():
         ) as connection:
             print(connection)
     except Error as e:
-        print("ERROR BRAT"+e)
+        print("ERROR"+e)
 
 
 @app.route('/')
