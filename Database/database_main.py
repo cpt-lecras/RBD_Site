@@ -3,6 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import ForeignKey
 from sqlalchemy import MetaData
+from sqlalchemy.orm import sessionmaker
 
 engine = create_engine('mysql+mysqlconnector://root:root@localhost/test')
 Base = declarative_base()
@@ -31,6 +32,7 @@ class Client(Base):
 
     id_country = Column(Integer, ForeignKey('country.id_country'))
     id_loyalty = Column(Integer, ForeignKey('loyalty.id_loyalty'))
+    password=Column(String, nullable=False)
 
 
 class Rate(Base):
@@ -67,7 +69,16 @@ class Ord(Base):
     summ = Column(Integer)
     tax = Column(Integer)
 
+"""
 metadata = MetaData()
 metadata.reflect(engine)
 Base.metadata = metadata
 Base.prepare()
+"""
+
+
+
+
+
+
+Session = sessionmaker(bind=engine)

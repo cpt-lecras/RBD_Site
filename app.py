@@ -1,12 +1,12 @@
 from flask import Flask,render_template
-from Database import database_main as database
+from Database import requests as req
 
 
 
 
 app= Flask(__name__)
+print(req.show_table())
 
-db=database.db_connection()
 
 
 @app.route('/')
@@ -29,5 +29,4 @@ def user(name,id):
     return "User Page: " + name + " - " + str(id)
 
 if __name__ == '__main__':
-    db_connection()
     app.run(debug=True)
