@@ -1,21 +1,12 @@
 from flask import Flask,render_template
-from getpass import getpass
-from mysql.connector import connect, Error
+from Database import database_main as database
+
 
 
 
 app= Flask(__name__)
-def db_connection():
-    try:
-        with connect(
-                host="localhost",
-                user="root",
-                password="root",
-                database="test",
-        ) as connection:
-            print(connection)
-    except Error as e:
-        print("ERROR"+e)
+
+db=database.db_connection()
 
 
 @app.route('/')
