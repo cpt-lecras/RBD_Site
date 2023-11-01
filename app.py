@@ -1,10 +1,14 @@
-from flask import Flask,render_template
+from flask import Flask,render_template, request
 from Database import requests as req
 
 
 
 
 app= Flask(__name__)
+
+
+
+
 print(req.show_table())
 
 
@@ -23,6 +27,10 @@ def about():
 def reg():
     return render_template('register.html')
 
+@app.route('/orders')
+def orders():
+
+    return req.show_orders(6)
 
 @app.route('/user/<string:name>/<int:id>')
 def user(name,id):

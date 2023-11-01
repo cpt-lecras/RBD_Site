@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Страница про нас
+{% endblock %}
+
+{% block body %}
+    <h1 class="container">Заказы</h1>
+
+<div class="h3 container">
+
+    ➕ Ниже приведен список заказов текущего пользователя
+</div>
+
+
+
+<h3 class="container">Всего заказов: {{ total }}</h3>
+{% for order in orders %}
+  <div class="order container">
+
+    <h3>ID заказа: {{ order.ord_number }}</h3>
+
+    <p>Сумма CRYPTO: {{ order.crypto_sum }} BTC</p>
+
+    <p>Сумма RUB: {{ order.summ }} руб</p>
+
+
+  </div>
+{% endfor %}
+
+<div class="container">
+{% if page > 1 %}
+  <a href="?page={{page-1}}">Prev</a>
+{% endif %}
+
+{% for p in range(1, total//per_page + 1) %}
+  <a href="?page={{p}}">{{p}}</a>
+{% endfor %}
+
+{% if total > page*per_page %}
+  <a href="?page={{page+1}}">Next</a>
+{% endif %}
+</div>
+
+
+{% endblock %}

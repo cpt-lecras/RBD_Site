@@ -2,7 +2,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import ForeignKey
-from sqlalchemy import MetaData
 from sqlalchemy.orm import sessionmaker
 
 engine = create_engine('mysql+mysqlconnector://root:root@localhost/test')
@@ -63,11 +62,16 @@ class Ord(Base):
 
     id_wallet = Column(Integer, ForeignKey('wallet.id_wallet'), primary_key=True)
     id_client = Column(Integer, ForeignKey('client.id_client'), primary_key=True)
-    id_coin = Column(Integer, ForeignKey('coin.id_coin'), primary_key=True)
+    ord_number = Column(Integer, primary_key=True, autoincrement=True)
+    id_coin = Column(Integer, ForeignKey('coin.id_coin'))
 
     crypto_sum = Column(Integer)
     summ = Column(Integer)
     tax = Column(Integer)
+
+    @staticmethod
+    def paginate(page, per_page=5):
+        return Ord.query.paginate(page, per_page)
 
 """
 metadata = MetaData()
