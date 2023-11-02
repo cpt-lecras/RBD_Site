@@ -60,8 +60,8 @@ class Bot_wallet(Base):
 class Ord(Base):
     __tablename__ = 'ord'
 
-    id_wallet = Column(Integer, ForeignKey('wallet.id_wallet'), primary_key=True)
-    id_client = Column(Integer, ForeignKey('client.id_client'), primary_key=True)
+    id_wallet = Column(Integer, ForeignKey('wallet.id_wallet'))
+    id_client = Column(Integer, ForeignKey('client.id_client'))
     ord_number = Column(Integer, primary_key=True, autoincrement=True)
     id_coin = Column(Integer, ForeignKey('coin.id_coin'))
 
